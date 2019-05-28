@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class OptionalMain {
 
@@ -13,72 +12,21 @@ public class OptionalMain {
        // task1.firstNameInput();
        // task1.secondReversInput();
        // task1.thirdRandomNum();
-       // task1.forthDigitSum();
+       // task1.firstMaxMin2_1();
 
 //===============================================================//
+        OptionTask2 task2 = new OptionTask2();
+        //task2.firstMaxMin2_1();
+        //task2.firstMaxMin2_1();
 
-       // forthDigitSum();
-        characterFind();
+        //characterFind();
 
     }
 
 
 //=========================================second================================
 
-    public static void forthDigitSum(){
-        int first = 0;
-        int minNum = 0;
-        int maxLenth = 0;
-        int minLenth = 1000;
 
-        ArrayList<Integer> integers = new ArrayList<Integer>();
-
-        try {
-            System.out.println("Enter num >> ");
-            BufferedReader in;
-            for (int i = 1; i < 6; i++ ){
-                System.out.println("Enter num >> " + i);
-                in = new BufferedReader(new InputStreamReader(System.in));
-                first = Integer.parseInt(in.readLine());
-                integers.add(first);
-
-            }
-
-            for (int i : integers){
-               int numberOfDigits = String.valueOf(i).length();
-
-               if(numberOfDigits > maxLenth){
-                   maxLenth = numberOfDigits;
-                   first = i;
-               }
-
-               if(minLenth > numberOfDigits ){
-                   minLenth = numberOfDigits;
-                   minNum = i;
-               }
-            }
-            System.out.println(first + " >>> " + maxLenth );
-            System.out.println(minNum + " >>> " + minLenth );
-
-            piramidPrint(integers);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void piramidPrint(ArrayList<Integer> integers){
-            Collections.sort(integers);
-            for (int i : integers){
-                System.out.println(i);
-    }
-            Collections.reverse(integers);
-            for (int i : integers){
-                System.out.println(i);
-            }
-    }
 
 
     public static void characterFind(){
