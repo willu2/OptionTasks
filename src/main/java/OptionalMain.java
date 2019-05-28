@@ -1,8 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class OptionalMain {
 
@@ -15,16 +11,24 @@ public class OptionalMain {
        // task1.firstMaxMin2_1();
 
 //===============================================================//
-        OptionTask2 task2 = new OptionTask2();
+        OptionalTask2 task2 = new OptionalTask2();
         //task2.firstMaxMin2_1();
-        //task2.firstMaxMin2_1();
+        //task2.firstMaxMin2_3();
+        task2.digitMinFind2_4();
+
 
         //characterFind();
 
+        //digitFind();
+        //searchDigitPlusOne();
+
+       // findValueWithMinSameChars();
     }
 
 
 //=========================================second================================
+
+
 
 
 
@@ -60,6 +64,66 @@ public class OptionalMain {
                 System.out.println(ch + "  : " + alphabetArray[i]);   //Show the result.
             }
         }
+    }
+
+
+
+    public static void searchDigitPlusOne()
+    {
+        int[] values = {00131551, 455444412, 847777, 56211, 455645, 55411, 12215, 8412377, 521211, 453345, 411, 2345};
+        for(int value : values)
+        {
+            int[] valuesArray = getCharsOfInteger(value);
+            int[] templateArray =  new int[valuesArray.length];
+            templateArray = Arrays.copyOfRange(valuesArray, 0, valuesArray.length);
+            bubbleSort(templateArray);
+
+            if(Arrays.equals(templateArray, valuesArray) ) {System.out.println(value); break;};
+
+        }
+
+    }
+
+    public static int[] getCharsOfInteger(int number) // Integer is divided into separate elements
+    {
+        int[] elements = new int[getCountsOfDigits(number)];
+        for (int i = 0; i < elements.length ; i++)
+        {
+            elements[elements.length - i - 1] =  number % 10;
+            number /= 10;
+        }
+
+        return elements;
+    }
+
+
+    public static void bubbleSort(int[] values) // sort form min to max
+    {
+        int tmp = 0;
+        for (int i = values.length; i > 0 ; i--)
+        {
+            for (int j = 0; j < values.length - 1 ; j++)
+            {
+                if(values[j] > values[j + 1 ])
+                {
+                    tmp = values[j +1 ];
+                    values[j + 1] = values[j];
+                    values[j] = tmp;
+                }
+            }
+        }
+    }
+
+
+    public static int getCountsOfDigits(int number) // Count number of char in Integer
+    {
+        int count = (number == 0) ? 1 : 0;
+        while (number != 0)
+        {
+            count++;
+            number /= 10;
+        }
+        return count;
     }
 }
 

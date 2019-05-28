@@ -4,9 +4,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class OptionTask2 {
+public class OptionalTask2 {
 
-    public OptionTask2() {
+    public OptionalTask2() {
     }
 
     public void firstMaxMin2_1(){  //2.1 task
@@ -18,7 +18,7 @@ public class OptionTask2 {
         ArrayList<Integer> integers = new ArrayList<Integer>();
 
         try {
-            System.out.println("Enter num >> ");
+
             BufferedReader in;
             for (int i = 1; i < 6; i++ ){
                 System.out.println("Enter num >> " + i);
@@ -106,5 +106,49 @@ public class OptionTask2 {
             System.out.println("You entered an invalid operation");
             //continue;   // go to beginning of loop
         }
+    }
+
+    public void digitMinFind2_4(){
+
+        String s[] = {"00131551", "455444412", "847777", "56211", "455645", "55411", "1115"};
+        int[] countDigit = new int[s.length];
+        int maxIndex = 0;
+        int maxValue = 0;
+        int minIndex = 0;
+        int minValue = 10000;
+
+        for (int i = 0; i < s.length; i++) {
+            s[i].replaceAll("\\D+", "");
+            int[] alphabetArray = new int[9];
+
+            for (int m = 0; m < s[i].length(); m++) {
+                char ch = s[i].charAt(m);
+                int value = (int) ch;
+                if (value >= 48 && value <= 57) {
+                    alphabetArray[ch - '0']++;
+                    if (alphabetArray[ch - '0'] > 1) {
+                        countDigit[i]++;
+                    }
+                }
+            }
+
+            for (int r = 0; r < countDigit.length; r++) {
+                if (countDigit[r] > 0) {
+                    //System.out.println( r + "  : " + countDigit[r] + " <<<<<");   //Show the result.
+                    if (countDigit[r] > maxValue) {
+                        maxValue = countDigit[r];
+                        maxIndex = r;
+                    }
+                    if (countDigit[r] < minValue) {
+                        minValue = countDigit[r];
+                        minIndex = r;
+                    }
+                }
+            }
+        }
+            System.out.println(s[maxIndex] + " << max value");   //Show the result.
+            System.out.println(s[minIndex] + " << min value");   //Show the result.
+            System.out.println("---------------");   //Show the result.
+
     }
 }
