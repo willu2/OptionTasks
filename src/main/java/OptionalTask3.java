@@ -40,10 +40,5 @@ public class OptionalTask3 {
             }
         }
 
-
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-
     }
 }

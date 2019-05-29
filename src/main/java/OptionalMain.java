@@ -25,9 +25,12 @@ public class OptionalMain {
         //task2.differentDigitFind2_7();
 
 
-        OptionalTask3 task3 = new OptionalTask3();
-        task3.monthInput();
+        //OptionalTask3 task3 = new OptionalTask3();
+        //task3.monthInput();
 
+        OptionalTask4 task4 = new OptionalTask4();
+        //task4.matrix();
+        task4.showMatrixRandValue(25);
 
     }
 
@@ -35,17 +38,6 @@ public class OptionalMain {
 
 //=========================================third================================
 
-
-
-   public static String getMonthForInt(int num) {
-       String[] months = new DateFormatSymbols(new Locale("en","US")).getMonths();
-        String month = "wrong";
-
-        if (num >= 0 && num <= 11 ) {
-            month = months[num];
-        }
-        return month;
-    }
 }
 
 
