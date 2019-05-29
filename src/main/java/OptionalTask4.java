@@ -1,7 +1,8 @@
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 public class OptionalTask4 {
+
+    private int[][] data;
 
     public OptionalTask4() {
     }
@@ -46,17 +47,21 @@ public class OptionalTask4 {
             System.out.println();
 
         }
+        System.out.printf("%n%d%s", maxValue , "  <<max value in the matrix");
         System.out.println();
-        System.out.println(maxValue);
+        System.out.printf("%s%n%s", "sorted matrix", "------------------");
         System.out.println();
-        sortMatrixColumn(workArray, n,n);
+        sortMatrixUpColumn(workArray, n,n);
+        sortMatrixToDown(workArray, n,n);
 
-        removeMaxValueRow(workArray, maxValue);
+        //removeMaxValueRow(workArray, maxValue);
 
+        makeMatrixTT(workArray);
+        removeRowsWithValueTT(maxValue);
 
     }
 
-    public void sortMatrixColumn(int[][] a, int rowNum, int colNum) {
+    public void sortMatrixUpColumn(int[][] a, int rowNum, int colNum) {
         int i = 0;
         int j = 0;
         int k = 0;
@@ -64,22 +69,17 @@ public class OptionalTask4 {
         for (i = 0; i < colNum; i++) {
             for (j = 0; j < rowNum; j++) {
                 for (k = j + 1; k < rowNum; k++) {
-                    if (i % 2 == 0) {          // to UP
+                     // to UP
                         if (a[j][i] > a[k][i]) {
                             int temp1 = a[j][i];
                             a[j][i] = a[k][i];
                             a[k][i] = temp1;
                         }
-                    } else {
-                        if (a[j][i] < a[k][i]) {  //to DOWN
-                            int temp1 = a[j][i];
-                            a[j][i] = a[k][i];
-                            a[k][i] = temp1;
-                        }
-                    }
                 }
             }
         }
+        System.out.printf("%s%n%s", "sorted UP matrix", "------------------");
+        System.out.println();
         for (int r = 0; r < colNum; r++) {
             for (int m = 0; m < rowNum; m++) {
                 System.out.printf("%3s%s" ,a[r][m],  " ");
@@ -88,22 +88,84 @@ public class OptionalTask4 {
         }
     }
 
-    public void removeMaxValueRow(int[][] workArray, int maxVal) {
-        int[][] temp = workArray;
-        int row = 0;
-        int col = 0;
-        System.out.println();System.out.println();
-        for (int r = 0; r < temp.length; r++) {
-            for (int m = 0; m < temp[r].length; m++) {
-                if(temp[r][m] == maxVal){
-                    row = r;
-                    col = m;
-                    System.out.println("nn>>>>>>>" + temp[r][m]);
-                    System.out.println(">>" + r +" --" + m );
+    public void sortMatrixToDown(int[][] a, int rowNum, int colNum) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        for (i = 0; i < colNum; i++) {
+            for (j = 0; j < rowNum; j++) {
+                for (k = j + 1; k < rowNum; k++) {
+
+                        if (a[j][i] < a[k][i]) {  //to DOWN
+                            int temp1 = a[j][i];
+                            a[j][i] = a[k][i];
+                            a[k][i] = temp1;
+                        }
                 }
-               // System.out.printf("%3s%s" , temp[r][m],  " ");
+            }
+        }
+        System.out.printf("%s%n%s", "sorted DOWN matrix", "------------------");
+        System.out.println();
+        for (int r = 0; r < colNum; r++) {
+            for (int m = 0; m < rowNum; m++) {
+                System.out.printf("%3s%s" ,a[r][m],  " ");
             }
             System.out.println();
         }
     }
-}
+
+    public void makeMatrixTT(int[][] data){
+        int r = data.length;
+        int c = data[0].length;
+        this.data = new int[r][c];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                this.data[i][j] = data[i][j];
+            }
+        }
+    }
+
+    public void removeRowsWithValueTT(final int value)
+    {
+            /* arraylist makes dynamically  */
+        List<int[]> rowsToKeep = new ArrayList<int[]>(this.data.length);
+        for(int[] row : this.data)
+        {
+            /* If you download Apache Commons, it has built-in array search
+                      methods so you don't have to write your own */
+            boolean found = false;
+            for(int testValue : row)
+            {
+                if(Integer.compare(value,testValue) == 0)
+                {
+                    found = true;
+                    break;
+                }
+            }
+                    /* if we didn't find our value in the current row,
+                      that must mean its a row we keep */
+            if(!found)
+            {
+                rowsToKeep.add(row);
+            }
+        }
+
+            /* now that we know what rows we want to keep, make our
+               new 2D array with only those rows */
+        this.data = new int[rowsToKeep.size()][];
+        for(int i=0; i < rowsToKeep.size(); i++)
+        {
+            this.data[i] = rowsToKeep.get(i);
+        }
+        System.out.println();
+        System.out.println("-------refactored------");
+        for (int r = 0; r < data.length; r++) {
+            for (int m = 0; m < data[r].length; m++) {
+                System.out.printf("%3s%s" ,data[r][m],  " ");
+            }
+            System.out.println();
+        }
+
+    }
+   }
