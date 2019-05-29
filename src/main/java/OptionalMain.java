@@ -25,8 +25,8 @@ public class OptionalMain {
         //task2.differentDigitFind2_7();
 
 
-
-        monthInput();
+        OptionalTask3 task3 = new OptionalTask3();
+        task3.monthInput();
 
 
     }
@@ -36,29 +36,7 @@ public class OptionalMain {
 //=========================================third================================
 
 
-    public static void monthInput(){
-        int num = 0;
-        String month = "" ;
-        System.out.println("Month number input >> ");
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-        try {
-            num = Integer.valueOf(in.readLine());
-            String[] months = new DateFormatSymbols(new Locale("en","US")).getMonths();
-            //String month = "wrong";
-
-            if (num >= 0 && num <= 11 ) {
-                month = months[num];
-            }
-            System.out.println("Hi " + month);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NumberFormatException e){
-            System.err.println("wrong month");
-        }
-
-
-    }
    public static String getMonthForInt(int num) {
        String[] months = new DateFormatSymbols(new Locale("en","US")).getMonths();
         String month = "wrong";

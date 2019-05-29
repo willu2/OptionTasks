@@ -39,7 +39,6 @@ public class OptionalTask1 {
         }
     }
 
-
     public void thirdRandomNum(){
         int count = 0;
         int num = 0;
@@ -52,7 +51,7 @@ public class OptionalTask1 {
             for(int i = count; i > 0; i--)
             {
                 num = random.nextInt(7000);
-                if(num%2==0){
+                if(num%2 == 0){
                     System.out.println(num + "  ::  ");
                 }else {
                     System.out.print(num + "  ::  ");
