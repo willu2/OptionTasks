@@ -216,6 +216,41 @@ public class OptionalTask2 {
         System.out.println("---------------");
     }
 
+    public void twinDigitFind2_5temo(){
+
+        String s[] = {"1234", "264", "84826", "56211", "455645", "55411", "2468", "856", "541", "1115", "444"};
+        int[] countTwitDigit = new int[s.length];
+        int[] tw = new int[s.length];
+
+        for (int i = 0; i < s.length; i++) {
+            boolean check = true;
+            s[i].replaceAll("\\D+", "");
+            //int[] alphabetArray = new int[9];
+
+            for (int m = 0; m < s[i].length(); m++) {  //count different digits
+                char ch = s[i].charAt(m);
+                int value = (int) ch;
+                if (value >= 48 && value <= 57) {
+                    if (value % 2 != 0 && check) {
+                        tw[i] = 1;
+                        check = !check;
+                        break;
+                    }
+                }
+                for (int r = 0; r < countTwitDigit.length; r++) {    // check if digit is more one
+                    if (countTwitDigit[r] > 0 ) {
+                        //System.out.println( s[i]  + "  :  << different digits" );
+                        // System.out.println( countTwitDigit[r]  + "  :  << " + r);
+                    }
+                }
+            }
+        }
+        for (int r = 0; r < tw.length; r++) {    // check if digit is more one
+            if(tw[r] == 0)
+                System.out.println( s[r]  + "  :  << twins digits" );
+        }
+    }
+
 
     public void characterFindtemp(){
 
