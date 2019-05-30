@@ -18,10 +18,10 @@ public class OptionalTask2 {
         ArrayList<Integer> integers = new ArrayList<Integer>();
 
         try {
-
+            System.out.printf("%s%n","Task_2.1-2.2");
             BufferedReader in;
             for (int i = 1; i < 6; i++ ){
-                System.out.println("Enter num >> " + i);
+                System.out.printf("%s%d%s%n","Enter ", i," number >> ");
                 in = new BufferedReader(new InputStreamReader(System.in));
                 first = Integer.parseInt(in.readLine());
                 integers.add(first);
@@ -41,8 +41,8 @@ public class OptionalTask2 {
                     minNum = i;
                 }
             }
-            System.out.println(first + " >>> " + maxLenth );
-            System.out.println(minNum + " >>> " + minLenth );
+            System.out.println(first + " >>> " + maxLenth + "  <longest");
+            System.out.println(minNum + " >>> " + minLenth + "  <shortest ");
 
             piramidPrint2_2(integers); ///2.2 task
 
@@ -54,6 +54,7 @@ public class OptionalTask2 {
     }
 
     public void piramidPrint2_2(ArrayList<Integer> integers){
+        System.out.println("Piramid ");
         Collections.sort(integers);
         for (int i : integers){
             System.out.println(i);

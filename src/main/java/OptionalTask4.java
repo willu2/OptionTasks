@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DateFormatSymbols;
 import java.util.*;
 
 public class OptionalTask4 {
@@ -27,12 +31,14 @@ public class OptionalTask4 {
 
     }
 
-    public void showMatrixRandValue(int k)
+    public void showMatrixRandValue()
     {
+        int k = readConsole();
         int maxValue = 0;
 
         Random random = new Random();
-        int n = (int) Math.sqrt(k);
+        //int n = (int) Math.sqrt(k);
+        int n = k;
         int[][] workArray = new int[n][n];
 
         for (int i = 0; i < n; i++)
@@ -143,9 +149,7 @@ public class OptionalTask4 {
                     break;
                 }
             }
-                    /* if we didn't find our value in the current row,
-                      that must mean its a row we keep */
-            if(!found)
+                               if(!found)
             {
                 rowsToKeep.add(row);
             }
@@ -168,4 +172,20 @@ public class OptionalTask4 {
         }
 
     }
-   }
+    public int readConsole(){
+    int num = 0;
+
+        System.out.println("Input matrix size [n]>> ");
+        System.out.println("0 to exit >> ");
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                num = Integer.valueOf(in.readLine());
+
+            } catch (IOException e) {
+                System.err.println("Error: " + e);
+            } catch (NumberFormatException e) {
+                System.err.println("wrong data");
+    }return num;
+    }
+
+}

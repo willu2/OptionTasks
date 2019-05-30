@@ -9,7 +9,8 @@ public class OptionalTask1 {
 
     public void firstNameInput(){
         String userName = "";
-        System.out.println("Name>> ");
+        System.out.println("Task_1.1: ");
+        System.out.println("InputName>> ");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         try {
@@ -23,7 +24,8 @@ public class OptionalTask1 {
     public void secondReversInput(){
         String userName = "";
         String reverse = "";
-        System.out.println("Your string to reverse >> ");
+        System.out.println("Task_1.2: ");
+        System.out.println("Enter text to reverse >> ");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         try {
@@ -42,7 +44,8 @@ public class OptionalTask1 {
     public void thirdRandomNum(){
         int count = 0;
         int num = 0;
-        System.out.println("Your rand num >> ");
+        System.out.println("Task_1.3: ");
+        System.out.println("Inpur random numbers count >> ");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         Random random = new Random();
@@ -52,9 +55,9 @@ public class OptionalTask1 {
             {
                 num = random.nextInt(7000);
                 if(num%2 == 0){
-                    System.out.println(num + "  ::  ");
+                    System.out.println(num + "  <<_  ");
                 }else {
-                    System.out.print(num + "  ::  ");
+                    System.out.print(num + "  <<_  ");
                 }
             }
 
@@ -63,11 +66,14 @@ public class OptionalTask1 {
         }catch (NumberFormatException e) {
             e.printStackTrace();
         }
+        System.out.println();
     }
 
     public void forthDigitSum(){
         int first = 0;
         int second = 0;
+
+        System.out.println("Task_1.4: ");
 
         try {
             System.out.println("Enter first num >> ");
@@ -86,5 +92,6 @@ public class OptionalTask1 {
         }catch (NumberFormatException e) {
             e.printStackTrace();
         }
+        System.out.printf("%s%n%s%n", "End of task 1", "===========" );
     }
 }
